@@ -21,16 +21,13 @@ class CategoriesSeeder extends Seeder
             'Sport'
         ];
 
-        $insert  = [];
-        $curTime = date('Y-m-d H:i:s');
-        $id      = 1;
+        $insert = [];
+        $id = 1;
 
         foreach ($categoriesList as $categoryName) {
             $insert[] = [
                 'id' => $id,
                 'name' => $categoryName,
-                'created_at' => $curTime,
-                'updated_at' => $curTime,
             ];
 
             $id++;

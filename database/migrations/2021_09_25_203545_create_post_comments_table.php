@@ -19,8 +19,8 @@ class CreatePostCommentsTable extends Migration
             $table->text('content');
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('profile_id');
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
         });
     }
 

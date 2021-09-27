@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resources([
+    'profiles' => ProfileController::class,
+    'posts' => PostController::class
+]);
+
 Route::get('/', function () {
-
-    return \App\Models\Profile::all();
-
-    //return view('welcome');
+    return view('home');
 });

@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
