@@ -16,13 +16,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title');
             $table->text('content');
-            $table->unsignedBigInteger('profile_id');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -35,7 +31,7 @@ class CreatePostsTable extends Migration
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('posts');
-        Schema::drop('comments');
+        Schema::dropIfExists('comments');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

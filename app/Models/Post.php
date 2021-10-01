@@ -2,35 +2,32 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
+    use HasFactory;
+
     protected $dates = [
         'created_at',
         'updated_at',
     ];
 
-    public function profile()
-    {
-        return $this->belongsTo('App\Models\Profile');
-    }
-
+    /**
+     * @return HasMany
+     */
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function category()
+    /**
+     * @return HasMany
+     */
+    public function tags()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->hasMany('App\Models\Tag');
     }
-
-    /*
-    public function getCreatedAtAttribute($value)
-    {
-        return $value->format('d-m-Y');
-    }
-    */
-
 }

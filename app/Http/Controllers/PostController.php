@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Profile;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create')
-            ->with('categories', Category::all())
+            ->with('categories', Tag::all())
             ->with('profiles', Profile::all());
     }
 
