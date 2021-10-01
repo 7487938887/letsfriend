@@ -4,14 +4,14 @@
 
 @section('content')
 
-    @if(session('status'))
+    @if (session('status'))
         <div class="row">
-            <p class="alert">{{session('status')}}</p>
+            <p class="alert">{{ session('status') }}</p>
         </div>
     @endif
 
     <div class="mb-3">
-        <a href="{{route('posts.create')}}">
+        <a href="{{ route('posts.create') }}">
             <button class="btn btn-success">
                 <i class="fa fa-plus"></i>
             </button>
@@ -28,23 +28,23 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($posts as $post)
+        @foreach ($posts as $post)
             <tr>
-                <td>{{$post->category->name}}</td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->content}}</td>
+                <td>{{ $post->category->name }}</td>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->content }}</td>
                 <td class="row float-right">
-                    <a class="mr-1" style="color:green;" href="{{route('posts.show', $post)}}">
+                    <a class="mr-1" style="color:green;" href="{{ route('posts.show', $post) }}">
                         <button class="btn btn-success">
                             <i class="fa fa-eye"></i>
                         </button>
                     </a>
-                    <a class="mr-1" style="color:green;" href="{{route('posts.edit', $post)}}">
+                    <a class="mr-1" style="color:green;" href="{{ route('posts.edit', $post) }}">
                         <button class="btn btn-info">
                             <i class="fa fa-edit"></i>
                         </button>
                     </a>
-                    <form method="POST" action="{{route('posts.destroy', $post)}}">
+                    <form method="POST" action="{{ route('posts.destroy', $post) }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
