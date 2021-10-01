@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PostsCommentsSeeder extends Seeder
+class CommentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class PostsCommentsSeeder extends Seeder
     {
         $curTime = date('Y-m-d H:i:s');
 
-        DB::table('post_comments')->insert([
+        DB::table('comments')->insert([
             [
                 'id' => 1,
                 'created_at' => $curTime,
@@ -48,6 +48,38 @@ class PostsCommentsSeeder extends Seeder
                 'content' => 'some politics comment from Summer',
                 'post_id' => 2,
                 'profile_id' => 3
+            ],
+            [
+                'id' => 5,
+                'created_at' => $curTime,
+                'updated_at' => $curTime,
+                'content' => 'some politics comment',
+                'post_id' => 3,
+                'profile_id' => 4
+            ],
+            [
+                'id' => 6,
+                'created_at' => $curTime,
+                'updated_at' => $curTime,
+                'content' => 'some politics comment from Summer',
+                'post_id' => 3,
+                'profile_id' => 3
+            ],
+            [
+                'id' => 7,
+                'created_at' => $curTime,
+                'updated_at' => $curTime,
+                'content' => 'some politics comment ',
+                'post_id' => 4,
+                'profile_id' => 2
+            ],
+            [
+                'id' => 8,
+                'created_at' => $curTime,
+                'updated_at' => $curTime,
+                'content' => 'some politics comment',
+                'post_id' => 4,
+                'profile_id' => 1
             ],
 
         ]);

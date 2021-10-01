@@ -7,4 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = ['name','email','password'];
+
+    public function posts()
+    {
+        return $this->hasMany('App\Model\Post');
+    }
+
+
 }

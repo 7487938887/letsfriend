@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles', ['profiles'=>Profile::all()]);
+        return view('profiles.index', ['profiles'=>Profile::all()]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile_create');
+        return view('profiles.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        return view('profile_show', ['profile' => $profile]);
+        return view('profiles.show', ['profile' => $profile]);
     }
 
     /**
@@ -70,7 +70,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        return view('profile_edit', ['profile' => $profile]);
+        return view('profiles.edit', ['profile' => $profile]);
     }
 
     /**

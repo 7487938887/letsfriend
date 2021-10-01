@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts');
+        return view('posts.index', ['posts'=>Post::all()]);
     }
 
     /**
@@ -24,7 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create')
+            ->with('categories', Category::all())
+            ->with('profiles', Profile::all());
     }
 
     /**
@@ -35,7 +39,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+        ]);
 
+        Post::create($validated);
+
+        return redirect()->route('posts.index')->with(['status'=>'Post successfully created']);
     }
 
     /**
@@ -46,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', ['post'=>$post]);
     }
 
     /**
@@ -57,7 +69,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post'=>$post]);
     }
 
     /**
@@ -69,7 +81,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'content' => '',
+            'category_id' => 'requires:int'
+        ]);
+
+        Post::update($validated);
+
+        return redirect()->route('posts.index')->with(['status'=>'Post successfully updated']);
     }
 
     /**
@@ -78,8 +98,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }
