@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
     public $timestamps = false;
 
     /**
-     * @return BelongsTo
+     * @return BelongsToMany
      */
     public function post()
     {
-        return $this->belongsTo('App\Models\Post');
+        return $this->belongsToMany(Post::class);
     }
 
 }

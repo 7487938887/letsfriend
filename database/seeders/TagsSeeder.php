@@ -115,28 +115,10 @@ class TagsSeeder extends Seeder
             'Neurology, General & Community Neurology',
             'Neurology, Headache and Pain',
             'Neurology, Movement Disorders',
-            'Neurology, MS & Neuroimmunology',
-            'Neurology, Neurocritical Care',
-            'Neurology, Neuromuscular Disease',
-            'Neurology, Stroke and Vascular Neurology',
-            'Neurosurgery',
-            'Neurosurgery, Neuro-Oncology News Clips',
-            'Nicholas Institute for Environmental Policy Solutions',
-            'Nicholas School of the Environment',
-            'Nursing',
         ];
 
-        $insert = [];
-
         foreach ($categoriesList as $categoryName) {
-            Tag::create([
-                'name' => $categoryName
-            ]);
-            //$insert[] = [
-            //    'name' => $categoryName,
-            //];
+            Tag::create(['name'=>$categoryName]);
         }
-
-        //Tag::create($insert);
     }
 }
